@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.phuong.notifications.ui.HomeFragment"
+        android:name="com.phuong.notifications.ui.home.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

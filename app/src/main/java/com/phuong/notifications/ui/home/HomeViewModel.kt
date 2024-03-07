@@ -1,4 +1,4 @@
-package com.phuong.notifications.ui
+package com.phuong.notifications.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,13 +17,16 @@ class HomeViewModel @Inject constructor(private val notificationRepository: Noti
         }
     }
 
-    private fun getListNotification(){
+     fun getListNotification(){
         viewModelScope.launch {
 
+            notificationRepository.getALlNotification().collect{lists ->
+
+            }
         }
     }
 
-    fun deleteNotification(notificationEntity: NotificationEntity){
-        viewModelScope.launch { notificationRepository.deleteNotification(notificationEntity) }
+    fun deleteNotification(id : String){
+        viewModelScope.launch { notificationRepository.deleteNotification(id) }
     }
 }

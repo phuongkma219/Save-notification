@@ -10,5 +10,6 @@ class ItemNotification(
     val iconImage: Drawable,
     val title: String,
     val content: String,
-    val date: Date
+    val countItem : List<ItemNotification>?= null,
+    val date: Long
 )

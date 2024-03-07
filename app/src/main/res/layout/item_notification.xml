@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="item"
+            type="com.phuong.notifications.ui.ItemNotification" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,79 +16,75 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="6dp"
-        >
-        <androidx.cardview.widget.CardView
+        android:paddingVertical="6dp">
+
+        <FrameLayout
             android:id="@+id/cvIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="24dp"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/bg_icon_noti"
+            android:padding="6dp"
             app:layout_constraintStart_toStartOf="parent"
-            >
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:background="@drawable/bg_icon_noti"
-                >
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    app:shapeAppearanceOverlay="@style/rounded_corner"
-                    android:scaleType="center"
-                    app:srcCompat="@drawable/ic_launcher_background"
-                    />
-            </FrameLayout>
+            app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.cardview.widget.CardView>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="centerCrop"
+                android:src="@{item.iconImage}"
+                app:shapeAppearanceOverlay="@style/rounded_corner"
+                tools:src="@tools:sample/avatars" />
+        </FrameLayout>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cvIcon"
-            app:layout_constraintBottom_toTopOf="@id/tvContent"
-            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:text="@{item.title}"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvContent"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:layout_marginStart="16dp"
-            tools:text="@tools:sample/first_names"/>
+            tools:text="@tools:sample/first_names" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            app:layout_constraintStart_toEndOf="@id/cvIcon"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
+            android:text="@{item.content}"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginStart="16dp"
-            tools:text="@tools:sample/full_names"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cvIcon"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="@tools:sample/full_names" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTime"
+            convertTime="@{item.date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            tools:text="@tools:sample/date/hhmm"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle"/>
+            app:layout_constraintTop_toTopOf="@id/tvTitle"
+            tools:text="@tools:sample/date/hhmm" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvContent"
+            android:background="@drawable/bg_item_count"
             android:paddingHorizontal="4dp"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            android:text="5"
-            android:background="@drawable/bg_item_count"/>
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvContent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

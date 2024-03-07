@@ -1,6 +1,8 @@
 package com.phuong.notifications.data.di
 
 import android.content.Context
+import com.phuong.notifications.data.NotificationRepository
+import com.phuong.notifications.data.NotificationRepositoryImpl
 import com.phuong.notifications.data.database.AppDatabase
 import com.phuong.notifications.data.database.NotificationDAO
 import dagger.Module
@@ -24,4 +26,8 @@ class RepositoryModule {
     fun providerDatabase(@ApplicationContext appContext: Context): AppDatabase {
         return AppDatabase.invoke(appContext)
     }
+
+    @Provides
+    @Singleton
+    fun providerNotificationRepository(notificationDAO: NotificationDAO) : NotificationRepository = NotificationRepositoryImpl(notificationDAO)
 }

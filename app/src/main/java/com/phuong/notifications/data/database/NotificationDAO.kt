@@ -11,11 +11,11 @@ import com.phuong.notifications.data.NotificationEntity
 @Dao
 interface NotificationDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertData(notificationEntity: NotificationEntity)
+     fun insertData(notificationEntity: NotificationEntity)
 
-    @Query("SELECT * FROM NOTIFICATION_DATA")
-    suspend fun getALlNotification() : List<NotificationEntity>
+    @Query("SELECT * FROM notification_data")
+     fun getALlNotification() : List<NotificationEntity>
 
-    @Delete
-    suspend fun delete(notificationEntity: NotificationEntity)
+    @Query("DELETE FROM notification_data WHERE id = :id")
+     fun delete(id : String)
 }
