@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.SaveNotification" parent="Base.Theme.SaveNotification" />
+
+    <style name="rounded_corner">
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

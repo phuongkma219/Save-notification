@@ -1,16 +1,15 @@
-package com.phuong.notifications
+package com.phuong.notifications.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.phuong.notifications.R
 import com.phuong.notifications.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,13 +23,15 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_home, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        checkPermission()
         return binding.root
     }
-
     private fun checkPermission(){
-        if (hasAccessGranted()){
-            Log.d("kkk", "checkPermission: success")
+        if (!hasAccessGranted()){
+
+        }
+        else{
+            val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+            activity?.startActivity(intent)
         }
     }
     private fun hasAccessGranted(): Boolean {
@@ -39,4 +40,5 @@ class HomeFragment : Fragment() {
         val packageName = binding.root.context.packageName
         return !(enabledNotificationListeners == null || !enabledNotificationListeners.contains(packageName))
     }
+
 }

@@ -1,7 +1,8 @@
-package com.phuong.notifications
+package com.phuong.notifications.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.phuong.notifications.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
